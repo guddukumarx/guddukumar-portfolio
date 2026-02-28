@@ -137,7 +137,7 @@ After uploading screenshot file to repo, use:
 - 🌍 Portfolio: https://guddukumar.co.in  
 - 💼 LinkedIn: https://linkedin.com/in/guddukumarx  
 - 🖥️ GitHub: https://github.com/guddukumarx  
-- 📧 Email: your-email@example.com  
+- 📧 Email: guddukumar.codes@gmail.com
 
 ---
 
