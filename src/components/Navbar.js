@@ -1,21 +1,22 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Menu, X } from "lucide-react";
 
+/* ✅ Move navLinks outside component (fixes ESLint build error) */
+const navLinks = [
+  { id: "home", label: "Home" },
+  { id: "about", label: "About" },
+  { id: "skills", label: "Skills" },
+  { id: "projects", label: "Projects" },
+  { id: "education", label: "Education" },
+  { id: "contact", label: "Contact" },
+];
+
 const Navbar = () => {
   const [active, setActive] = useState("home");
   const [isOpen, setIsOpen] = useState(false);
   const [showNav, setShowNav] = useState(true);
   const [scrollProgress, setScrollProgress] = useState(0);
   const lastScroll = useRef(0);
-
-  const navLinks = [
-    { id: "home", label: "Home" },
-    { id: "about", label: "About" },
-    { id: "skills", label: "Skills" },
-    { id: "projects", label: "Projects" },
-    { id: "education", label: "Education" },
-    { id: "contact", label: "Contact" },
-  ];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -25,7 +26,11 @@ const Navbar = () => {
       const totalHeight =
         document.documentElement.scrollHeight -
         document.documentElement.clientHeight;
-      setScrollProgress((currentScroll / totalHeight) * 100);
+
+      const progress =
+        totalHeight > 0 ? (currentScroll / totalHeight) * 100 : 0;
+
+      setScrollProgress(progress);
 
       // Hide / show navbar
       if (currentScroll > lastScroll.current) {
@@ -33,19 +38,18 @@ const Navbar = () => {
       } else {
         setShowNav(true);
       }
+
       lastScroll.current = currentScroll;
 
       // Active Section
       navLinks.forEach((link) => {
         const section = document.getElementById(link.id);
+
         if (section) {
           const top = section.offsetTop - 140;
           const height = section.offsetHeight;
 
-          if (
-            currentScroll >= top &&
-            currentScroll < top + height
-          ) {
+          if (currentScroll >= top && currentScroll < top + height) {
             setActive(link.id);
           }
         }
@@ -58,29 +62,27 @@ const Navbar = () => {
 
   return (
     <>
-      {/* Scroll Progress Line */}
+      {/* Scroll Progress */}
       <div
         className="fixed top-0 left-0 h-[3px] bg-gradient-to-r from-purple-500 to-pink-500 z-[100] transition-all duration-200"
         style={{ width: `${scrollProgress}%` }}
       />
 
-      {/* Floating Pill Navbar */}
       <nav
         className={`fixed top-6 left-1/2 -translate-x-1/2 z-50 transition-all duration-500 ${
           showNav ? "translate-y-0 opacity-100" : "-translate-y-24 opacity-0"
         }`}
       >
-        <div className="
-          flex items-center justify-between
+        <div
+          className="flex items-center justify-between
           px-6 lg:px-10 py-3
           rounded-full
           bg-[#0b061a]/70
           backdrop-blur-2xl
           border border-white/10
           shadow-[0_10px_30px_rgba(0,0,0,0.4)]
-          w-[95vw] md:w-auto
-        ">
-
+          w-[95vw] md:w-auto"
+        >
           {/* Logo */}
           <a
             href="#home"
@@ -91,7 +93,6 @@ const Navbar = () => {
 
           {/* Desktop Links */}
           <div className="hidden md:flex items-center relative ml-8">
-
             {navLinks.map((link) => (
               <a
                 key={link.id}
@@ -109,7 +110,6 @@ const Navbar = () => {
               </a>
             ))}
 
-            {/* Resume Button */}
             <a
               href="/resume.pdf"
               download
@@ -122,7 +122,7 @@ const Navbar = () => {
           {/* Mobile Toggle */}
           <button
             className="md:hidden text-purple-400 ml-4"
-            onClick={() => setIsOpen(!isOpen)}
+            onClick={() => setIsOpen((prev) => !prev)}
           >
             {isOpen ? <X size={24} /> : <Menu size={24} />}
           </button>

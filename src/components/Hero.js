@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Download, Mail, Linkedin, Github, ArrowDown } from "lucide-react";
+import { Linkedin, Github, ArrowDown } from "lucide-react";
 import profileImage from "../assets/profile.jpeg";
 
 const roles = [
@@ -10,32 +10,29 @@ const roles = [
 ];
 
 const Hero = () => {
-  const [currentRole, setCurrentRole] = useState("");
   const [roleIndex, setRoleIndex] = useState(0);
-  const [charIndex, setCharIndex] = useState(0);
+  const [displayText, setDisplayText] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
 
   useEffect(() => {
-    const currentText = roles[roleIndex];
-    const speed = isDeleting ? 40 : 80;
+    const currentRole = roles[roleIndex];
+    const typingSpeed = isDeleting ? 40 : 80;
 
-    const timer = setTimeout(() => {
-      if (!isDeleting && charIndex < currentText.length) {
-        setCurrentRole(currentText.slice(0, charIndex + 1));
-        setCharIndex(charIndex + 1);
-      } else if (isDeleting && charIndex > 0) {
-        setCurrentRole(currentText.slice(0, charIndex - 1));
-        setCharIndex(charIndex - 1);
-      } else if (!isDeleting && charIndex === currentText.length) {
+    const timeout = setTimeout(() => {
+      if (!isDeleting && displayText.length < currentRole.length) {
+        setDisplayText(currentRole.slice(0, displayText.length + 1));
+      } else if (isDeleting && displayText.length > 0) {
+        setDisplayText(currentRole.slice(0, displayText.length - 1));
+      } else if (!isDeleting && displayText.length === currentRole.length) {
         setTimeout(() => setIsDeleting(true), 1200);
-      } else if (isDeleting && charIndex === 0) {
+      } else if (isDeleting && displayText.length === 0) {
         setIsDeleting(false);
         setRoleIndex((prev) => (prev + 1) % roles.length);
       }
-    }, speed);
+    }, typingSpeed);
 
-    return () => clearTimeout(timer);
-  }, [charIndex, isDeleting, roleIndex]);
+    return () => clearTimeout(timeout);
+  }, [displayText, isDeleting, roleIndex]);
 
   return (
     <section
@@ -50,26 +47,22 @@ const Hero = () => {
         <div className="flex flex-col lg:flex-row items-center gap-16 lg:gap-24">
           {/* LEFT SIDE */}
           <div className="flex-1 text-center lg:text-left">
-            {/* Availability Badge */}
             <div className="inline-flex items-center gap-2 mb-8 px-4 py-1 rounded-full bg-green-900/20 border border-green-600/40 text-green-400 text-sm">
               <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
               Open for Full-Time Opportunities • 2026 Batch
             </div>
 
-            {/* Name */}
             <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-extrabold leading-tight mb-4">
               Guddu Kumar
             </h1>
 
-            {/* Typewriter Role */}
             <div className="h-[40px] sm:h-[50px] mb-6">
               <span className="text-lg sm:text-xl md:text-3xl font-semibold text-transparent bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text">
-                {currentRole}
+                {displayText}
               </span>
               <span className="text-purple-400 ml-1 animate-pulse">|</span>
             </div>
 
-            {/* Refined Bio */}
             <p className="text-gray-400 text-sm sm:text-base md:text-lg max-w-xl mx-auto lg:mx-0 leading-relaxed mb-10">
               Final-year Computer Science student building scalable,
               production-ready full-stack applications using the MERN stack.
@@ -77,7 +70,6 @@ const Hero = () => {
               solving real-world engineering problems.
             </p>
 
-            {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-10">
               <a
                 href="/resume.pdf"
@@ -95,38 +87,33 @@ const Hero = () => {
               </a>
             </div>
 
-            {/* Social Icons */}
             <div className="flex gap-4 justify-center lg:justify-start mb-14">
-              {[
-                {
-                  icon: <Linkedin size={18} />,
-                  link: "https://linkedin.com/in/guddukumarx",
-                },
-                {
-                  icon: <Github size={18} />,
-                  link: "https://github.com/guddukumarx",
-                },
-              ].map((item, index) => (
-                <a
-                  key={index}
-                  href={item.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="p-3 rounded-full bg-white/5 border border-white/10 hover:bg-purple-600/20 transition duration-300"
-                >
-                  {item.icon}
-                </a>
-              ))}
+              <a
+                href="https://linkedin.com/in/guddukumarx"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-3 rounded-full bg-white/5 border border-white/10 hover:bg-purple-600/20 transition duration-300"
+              >
+                <Linkedin size={18} />
+              </a>
+
+              <a
+                href="https://github.com/guddukumarx"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-3 rounded-full bg-white/5 border border-white/10 hover:bg-purple-600/20 transition duration-300"
+              >
+                <Github size={18} />
+              </a>
             </div>
 
-            {/* Refined Stats */}
             <div className="grid grid-cols-3 gap-6 max-w-lg mx-auto lg:mx-0">
               {[
                 { value: "5+", label: "Projects" },
                 { value: "100+", label: "DSA Solved" },
                 { value: "MERN", label: "Primary Stack" },
-              ].map((item, i) => (
-                <div key={i} className="text-center">
+              ].map((item, index) => (
+                <div key={index} className="text-center">
                   <h3 className="text-2xl sm:text-3xl font-bold text-purple-400">
                     {item.value}
                   </h3>
@@ -138,7 +125,7 @@ const Hero = () => {
             </div>
           </div>
 
-          {/* RIGHT SIDE IMAGE */}
+          {/* RIGHT IMAGE */}
           <div className="flex-1 flex justify-center">
             <div className="relative group">
               <div className="absolute inset-0 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 blur-2xl opacity-30 group-hover:opacity-60 transition duration-500" />
@@ -154,7 +141,6 @@ const Hero = () => {
           </div>
         </div>
 
-        {/* Scroll Indicator */}
         <a
           href="#about"
           className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce hidden sm:block"
