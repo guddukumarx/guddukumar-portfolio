@@ -1,32 +1,35 @@
 # 🚀 Guddu Kumar – Developer Portfolio  
 
-![Portfolio Banner](https://via.placeholder.com/1200x300?text=Guddu+Kumar+Portfolio)
+<p align="center">
+  <img src="./preview.png" alt="Guddu Kumar Portfolio Preview" width="100%" />
+</p>
 
 <p align="center">
-  <a href="https://guddukumar.co.in" target="_blank">
-    <img src="https://img.shields.io/badge/Live-Website-blue?style=for-the-badge" />
+  <a href="https://guddukumar.co.in">
+    <img src="https://img.shields.io/badge/Live-Website-blue?style=for-the-badge&logo=vercel" />
   </a>
-  <a href="https://github.com/guddukumarx" target="_blank">
+  <a href="https://github.com/guddukumarx">
     <img src="https://img.shields.io/badge/GitHub-guddukumarx-black?style=for-the-badge&logo=github" />
   </a>
-  <img src="https://img.shields.io/badge/React-18-blue?style=for-the-badge&logo=react" />
-  <img src="https://img.shields.io/badge/TailwindCSS-3-cyan?style=for-the-badge&logo=tailwindcss" />
+  <img src="https://img.shields.io/badge/React-18-61DAFB?style=for-the-badge&logo=react" />
+  <img src="https://img.shields.io/badge/TailwindCSS-3-38BDF8?style=for-the-badge&logo=tailwindcss" />
 </p>
 
 ---
 
 ## 👨‍💻 About The Project  
 
-This is my personal **Developer Portfolio Website** built using modern frontend technologies.  
-It showcases my:
+This repository contains the source code of my personal **Developer Portfolio Website**.
 
-- 💼 Projects  
+The portfolio is designed to professionally showcase:
+
+- 💼 Featured Projects  
 - 🛠️ Technical Skills  
-- 📜 Certifications  
+- 📜 Certifications & Achievements  
 - 📄 Resume  
-- 📬 Contact Details  
+- 📬 Contact Information  
 
-The goal of this portfolio is to represent my development skills professionally and create a strong online presence.
+The primary goal is to present my development expertise and establish a strong professional online presence.
 
 ---
 
@@ -45,15 +48,15 @@ The goal of this portfolio is to represent my development skills professionally 
 
 ---
 
-## ✨ Features  
+## ✨ Key Features  
 
-- ⚡ Modern & Clean UI  
-- 📱 Fully Responsive Design  
-- 🎭 Smooth Animations  
-- 🌙 Dark Theme  
-- 📄 Download Resume Option  
-- 📬 Contact Form Section  
-- 🚀 Fast Loading & Optimized Performance  
+- ⚡ Modern & Professional UI  
+- 📱 Fully Responsive (Mobile + Tablet + Desktop)  
+- 🎭 Smooth Animations using Framer Motion  
+- 🌙 Elegant Dark Theme  
+- 📄 Resume Download Option  
+- 📬 Functional Contact Section  
+- 🚀 Optimized Performance  
 - 🔍 SEO Friendly Structure  
 
 ---
@@ -72,6 +75,7 @@ guddukumar-portfolio/
 │── package.json
 │── tailwind.config.js
 │── README.md
+│── preview.png
 ```
 
 ---
@@ -84,7 +88,7 @@ guddukumar-portfolio/
 git clone https://github.com/guddukumarx/guddukumar-portfolio.git
 ```
 
-### 2️⃣ Navigate into the Folder
+### 2️⃣ Navigate to the Project Folder
 
 ```
 cd guddukumar-portfolio
@@ -96,13 +100,13 @@ cd guddukumar-portfolio
 npm install
 ```
 
-### 4️⃣ Start Development Server
+### 4️⃣ Run Development Server
 
 ```
 npm start
 ```
 
-App will run on:
+Application runs at:
 
 ```
 http://localhost:3000
@@ -116,28 +120,22 @@ http://localhost:3000
 npm run build
 ```
 
-Optimized production files will be available inside the `build/` folder.
+Production-ready files will be generated inside the `build/` directory.
 
 ---
 
-## 📸 Preview  
+## 🌐 Live Website  
 
-(Add your homepage screenshot here)
-
-After uploading screenshot file to repo, use:
-
-```
-![Portfolio Preview](./preview.png)
-```
+🔗 https://guddukumar.co.in  
 
 ---
 
-## 🌐 Connect With Me  
+## 🤝 Connect With Me  
 
 - 🌍 Portfolio: https://guddukumar.co.in  
 - 💼 LinkedIn: https://linkedin.com/in/guddukumarx  
 - 🖥️ GitHub: https://github.com/guddukumarx  
-- 📧 Email: guddukumar.codes@gmail.com
+- 📧 Email: guddukumar.codes@gmail.com  
 
 ---
 
@@ -145,11 +143,11 @@ After uploading screenshot file to repo, use:
 
 **Guddu Kumar**  
 B.Tech CSE Final Year Student  
-Full Stack Developer | MERN Stack Enthusiast  
+Full Stack Developer | MERN Stack Developer  
 
 ---
 
 ## ⭐ Support  
 
-If you like this project, please give it a ⭐ on GitHub.  
-It motivates me to build more awesome projects 🚀
+If you found this project helpful, consider giving it a ⭐ on GitHub.  
+It motivates me to continue building impactful projects 🚀
