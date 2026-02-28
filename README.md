@@ -68,7 +68,6 @@ guddukumar-portfolio/
 │── public/
 │── src/
 │   ├── components/
-│   ├── sections/
 │   ├── assets/
 │   ├── App.js
 │   └── index.js
